@@ -2,11 +2,13 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setDarkMode } from '../../store/slices/themeSlice'
 import Navbar from './Navbar'
+import Sidebar from './Sidebar'
 import Footer from './Footer'
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch()
   const { isDarkMode } = useSelector((state) => state.theme)
+  const { isAuthenticated } = useSelector((state) => state.auth)
 
   useEffect(() => {
     // Check for saved theme preference or default to light mode
@@ -37,11 +39,18 @@ const Layout = ({ children }) => {
     <div className={`min-h-screen transition-colors duration-200 ${
       isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'
     }`}>
-      <Navbar />
-      <main className="flex-1">
-        {children}
+      {isAuthenticated && <Navbar />}
+      {isAuthenticated && <Sidebar />}
+      
+      <main className={`flex-1 transition-all duration-200 ${
+        isAuthenticated ? 'lg:pl-64' : ''
+      }`}>
+        <div className={isAuthenticated ? 'pt-16 lg:pt-0' : ''}>
+          {children}
+        </div>
       </main>
-      <Footer />
+      
+      {isAuthenticated && <Footer />}
     </div>
   )
 }

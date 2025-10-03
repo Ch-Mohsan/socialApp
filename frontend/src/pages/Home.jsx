@@ -4,11 +4,17 @@ import PostCard from '../components/posts/PostCard'
 import CreatePostCard from '../components/posts/CreatePostCard'
 import StorySection from '../components/story/StorySection'
 import SuggestedUsers from '../components/users/SuggestedUsers'
+import LandingPage from '../components/landing/LandingPage'
 
 const Home = () => {
   const { isDarkMode } = useSelector((state) => state.theme)
   const { posts } = useSelector((state) => state.posts)
   const { isAuthenticated } = useSelector((state) => state.auth)
+
+  // If user is not authenticated, show landing page
+  if (!isAuthenticated) {
+    return <LandingPage />
+  }
 
   // Mock posts data for demonstration
   const mockPosts = [
@@ -62,49 +68,9 @@ const Home = () => {
             </div>
 
             {/* Create Post */}
-            {isAuthenticated && (
-              <div className="mb-6">
-                <CreatePostCard />
-              </div>
-            )}
-
-            {/* Welcome Message for Non-authenticated Users */}
-            {!isAuthenticated && (
-              <div className={`rounded-xl p-8 mb-6 text-center transition-colors duration-200 ${
-                isDarkMode 
-                  ? 'bg-gray-800 border border-gray-700' 
-                  : 'bg-white border border-gray-200'
-              }`}>
-                <h2 className={`text-3xl font-bold mb-4 ${
-                  isDarkMode ? 'text-white' : 'text-gray-900'
-                }`}>
-                  Welcome to SocialApp
-                </h2>
-                <p className={`text-lg mb-6 ${
-                  isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                }`}>
-                  Connect with friends, share your moments, and discover amazing content from around the world.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a
-                    href="/register"
-                    className="px-8 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors duration-200"
-                  >
-                    Join SocialApp
-                  </a>
-                  <a
-                    href="/login"
-                    className={`px-8 py-3 rounded-lg font-semibold transition-colors duration-200 ${
-                      isDarkMode 
-                        ? 'border border-gray-600 text-gray-300 hover:bg-gray-700' 
-                        : 'border border-gray-300 text-gray-700 hover:bg-gray-50'
-                    }`}
-                  >
-                    Sign In
-                  </a>
-                </div>
-              </div>
-            )}
+            <div className="mb-6">
+              <CreatePostCard />
+            </div>
 
             {/* Posts Feed */}
             <div className="space-y-6">
