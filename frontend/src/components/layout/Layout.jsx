@@ -50,7 +50,11 @@ const Layout = ({ children }) => {
         </div>
       </main>
       
-      {isAuthenticated && <Footer />}
+      <footer className={`transition-all duration-200 ${
+        isAuthenticated ? 'lg:pl-64' : ''
+      }`}>
+        {isAuthenticated && <Footer />}
+      </footer>
     </div>
   )
 }

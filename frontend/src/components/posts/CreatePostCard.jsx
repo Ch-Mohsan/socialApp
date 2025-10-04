@@ -69,8 +69,8 @@ const CreatePostCard = () => {
   return (
     <div className={`rounded-xl p-6 transition-colors duration-200 ${
       isDarkMode 
-        ? 'bg-gray-800 border border-gray-700' 
-        : 'bg-white border border-gray-200'
+        ? 'bg-[var(--surface)] border border-[var(--muted)]' 
+        : 'bg-[var(--surface)] border border-[var(--muted)]'
     }`}>
       <form onSubmit={handleSubmit}>
         {/* Header */}
@@ -81,14 +81,10 @@ const CreatePostCard = () => {
             className="w-10 h-10 rounded-full object-cover"
           />
           <div className="flex-1">
-            <h3 className={`font-semibold text-sm ${
-              isDarkMode ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h3 className={`font-semibold text-sm text-[var(--ink)]`}>
               {user?.name || 'Your Name'}
             </h3>
-            <p className={`text-xs ${
-              isDarkMode ? 'text-gray-400' : 'text-gray-500'
-            }`}>
+            <p className={`text-xs text-[var(--muted)]`}>
               Share something with your friends
             </p>
           </div>
@@ -101,10 +97,10 @@ const CreatePostCard = () => {
             onChange={(e) => setContent(e.target.value)}
             placeholder="What's on your mind?"
             rows={3}
-            className={`w-full p-3 rounded-lg border resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ${
+            className={`w-full p-3 rounded-lg border resize-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent transition-colors duration-200 ${
               isDarkMode 
-                ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                : 'bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-500'
+                ? 'bg-[var(--paper)] border-[var(--muted)] text-[var(--ink)] placeholder-[var(--muted)]' 
+                : 'bg-[var(--paper)] border-[var(--muted)] text-[var(--ink)] placeholder-[var(--muted)]'
             }`}
           />
         </div>
@@ -131,11 +127,7 @@ const CreatePostCard = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             {/* Image Upload */}
-            <label className={`flex items-center space-x-2 cursor-pointer px-3 py-2 rounded-lg transition-all duration-200 ${
-              isDarkMode 
-                ? 'text-gray-400 hover:text-green-400 hover:bg-gray-700' 
-                : 'text-gray-600 hover:text-green-600 hover:bg-gray-100'
-            }`}>
+            <label className={`flex items-center space-x-2 cursor-pointer px-3 py-2 rounded-lg transition-all duration-200 text-[var(--muted)] hover:text-[var(--accent)] hover:bg-[var(--paper)]`}>
               <Image size={20} />
               <span className="text-sm font-medium">Photo</span>
               <input
@@ -149,11 +141,7 @@ const CreatePostCard = () => {
             {/* Emoji Button */}
             <button
               type="button"
-              className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 ${
-                isDarkMode 
-                  ? 'text-gray-400 hover:text-yellow-400 hover:bg-gray-700' 
-                  : 'text-gray-600 hover:text-yellow-600 hover:bg-gray-100'
-              }`}
+              className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 text-[var(--muted)] hover:text-[var(--accent)] hover:bg-[var(--paper)]`}
             >
               <Smile size={20} />
               <span className="text-sm font-medium">Feeling</span>
@@ -162,11 +150,7 @@ const CreatePostCard = () => {
             {/* Location Button */}
             <button
               type="button"
-              className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 ${
-                isDarkMode 
-                  ? 'text-gray-400 hover:text-red-400 hover:bg-gray-700' 
-                  : 'text-gray-600 hover:text-red-600 hover:bg-gray-100'
-              }`}
+              className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 text-[var(--muted)] hover:text-[var(--accent)] hover:bg-[var(--paper)]`}
             >
               <MapPin size={20} />
               <span className="text-sm font-medium">Location</span>
@@ -177,7 +161,7 @@ const CreatePostCard = () => {
           <button
             type="submit"
             disabled={(!content.trim() && !selectedImage) || isPosting}
-            className="px-6 py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+            className="px-6 py-2 bg-[var(--accent)] text-white rounded-lg font-semibold hover:bg-[var(--accent-hover)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
           >
             {isPosting ? (
               <div className="flex items-center space-x-2">

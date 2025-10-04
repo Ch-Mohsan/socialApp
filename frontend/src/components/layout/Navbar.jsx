@@ -44,21 +44,15 @@ const Navbar = () => {
   ]
 
   return (
-    <nav className={`sticky top-0 z-50 border-b backdrop-blur-md bg-opacity-80 transition-all duration-300 ${
-      isDarkMode 
-        ? 'bg-gray-900 border-gray-800' 
-        : 'bg-white border-gray-200'
-    }`}>
+    <nav className={`sticky top-0 z-50 border-b backdrop-blur-md bg-opacity-80 transition-all duration-300 bg-[var(--paper)] border-[var(--muted)]`} data-theme={isDarkMode ? 'dark' : 'light'}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
+            <div className="w-10 h-10 bg-[var(--accent)] rounded-xl flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
               <span className="text-white font-bold text-lg">S</span>
             </div>
-            <div className={`font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent ${
-              isDarkMode ? 'hover:from-blue-400 hover:to-purple-400' : ''
-            }`}>
+            <div className={`font-bold text-xl text-[var(--ink)]`}>
               SocialApp
             </div>
           </Link>
@@ -72,8 +66,8 @@ const Navbar = () => {
                   to={item.path}
                   className={`flex items-center space-x-2 px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 ${
                     isDarkMode 
-                      ? 'text-gray-300 hover:bg-gray-800 hover:text-white' 
-                      : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                      ? 'text-[var(--muted)] hover:bg-[var(--surface)] hover:text-[var(--ink)]' 
+                      : 'text-[var(--muted)] hover:bg-[var(--surface)] hover:text-[var(--ink)]'
                   }`}
                   title={item.label}
                 >
@@ -91,13 +85,13 @@ const Navbar = () => {
               to="/notifications"
               className={`relative p-2 rounded-xl transition-all duration-200 hover:scale-105 ${
                 isDarkMode 
-                  ? 'text-gray-400 hover:bg-gray-800 hover:text-white' 
-                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                  ? 'text-[var(--muted)] hover:bg-[var(--surface)] hover:text-[var(--ink)]' 
+                  : 'text-[var(--muted)] hover:bg-[var(--surface)] hover:text-[var(--ink)]'
               }`}
               title="Notifications"
             >
               <Bell size={20} />
-              <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
+              <span className="absolute -top-1 -right-1 w-3 h-3 bg-[var(--accent)] rounded-full"></span>
             </Link>
 
             {/* Theme Toggle */}
@@ -105,8 +99,8 @@ const Navbar = () => {
               onClick={handleThemeToggle}
               className={`p-2 rounded-xl transition-all duration-200 hover:scale-105 ${
                 isDarkMode 
-                  ? 'text-yellow-400 hover:bg-gray-800' 
-                  : 'text-gray-600 hover:bg-gray-100'
+                  ? 'text-[var(--accent)] hover:bg-[var(--surface)]' 
+                  : 'text-[var(--accent)] hover:bg-[var(--surface)]'
               }`}
               title={isDarkMode ? 'Light Mode' : 'Dark Mode'}
             >
@@ -118,8 +112,8 @@ const Navbar = () => {
               to="/settings"
               className={`p-2 rounded-xl transition-all duration-200 hover:scale-105 ${
                 isDarkMode 
-                  ? 'text-gray-400 hover:bg-gray-800 hover:text-white' 
-                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                  ? 'text-[var(--muted)] hover:bg-[var(--surface)] hover:text-[var(--ink)]' 
+                  : 'text-[var(--muted)] hover:bg-[var(--surface)] hover:text-[var(--ink)]'
               }`}
               title="Settings"
             >
@@ -131,8 +125,8 @@ const Navbar = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`md:hidden p-2 rounded-xl transition-all duration-200 ${
                 isDarkMode 
-                  ? 'text-gray-300 hover:bg-gray-800' 
-                  : 'text-gray-600 hover:bg-gray-100'
+                  ? 'text-[var(--muted)] hover:bg-[var(--surface)]' 
+                  : 'text-[var(--muted)] hover:bg-[var(--surface)]'
               }`}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -154,8 +148,8 @@ const Navbar = () => {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 ${
                       isDarkMode 
-                        ? 'text-gray-300 hover:bg-gray-800 hover:text-white' 
-                        : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                        ? 'text-[var(--muted)] hover:bg-[var(--surface)] hover:text-[var(--ink)]' 
+                        : 'text-[var(--muted)] hover:bg-[var(--surface)] hover:text-[var(--ink)]'
                     }`}
                   >
                     <item.icon size={20} />

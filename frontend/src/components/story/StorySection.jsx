@@ -67,8 +67,8 @@ const StorySection = () => {
   return (
     <div className={`rounded-xl p-4 transition-colors duration-200 ${
       isDarkMode 
-        ? 'bg-gray-800 border border-gray-700' 
-        : 'bg-white border border-gray-200'
+        ? 'bg-[var(--surface)] border border-[var(--muted)]' 
+        : 'bg-[var(--surface)] border border-[var(--muted)]'
     }`}>
       <div className="flex space-x-4 overflow-x-auto scrollbar-hide">
         {/* Add Story (Your Story) */}
@@ -76,7 +76,7 @@ const StorySection = () => {
           <div className="flex flex-col items-center flex-shrink-0 cursor-pointer group">
             <div className="relative">
               <div className={`w-16 h-16 rounded-full p-0.5 transition-colors duration-200 ${
-                isDarkMode ? 'bg-gray-600' : 'bg-gray-200'
+                isDarkMode ? 'bg-[var(--muted)]' : 'bg-[var(--muted)]'
               }`}>
                 <img
                   src={user?.avatar || 'https://via.placeholder.com/60'}
@@ -84,13 +84,11 @@ const StorySection = () => {
                   className="w-full h-full rounded-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center border-2 border-white">
+              <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-[var(--accent)] rounded-full flex items-center justify-center border-2 border-[var(--surface)]">
                 <Plus size={12} className="text-white" />
               </div>
             </div>
-            <span className={`text-xs mt-2 text-center max-w-[70px] truncate ${
-              isDarkMode ? 'text-gray-300' : 'text-gray-700'
-            }`}>
+            <span className={`text-xs mt-2 text-center max-w-[70px] truncate text-[var(--ink)]`}>
               Your story
             </span>
           </div>
@@ -106,8 +104,8 @@ const StorySection = () => {
               story.hasStory && !story.isViewed
                 ? 'bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500'
                 : story.hasStory && story.isViewed
-                ? isDarkMode ? 'bg-gray-600' : 'bg-gray-300'
-                : isDarkMode ? 'bg-gray-600' : 'bg-gray-200'
+                ? 'bg-[var(--muted)]'
+                : 'bg-[var(--muted)]'
             }`}>
               <img
                 src={story.user.avatar}
@@ -115,9 +113,7 @@ const StorySection = () => {
                 className="w-full h-full rounded-full object-cover"
               />
             </div>
-            <span className={`text-xs mt-2 text-center max-w-[70px] truncate transition-colors duration-200 ${
-              isDarkMode ? 'text-gray-300' : 'text-gray-700'
-            }`}>
+            <span className={`text-xs mt-2 text-center max-w-[70px] truncate transition-colors duration-200 text-[var(--ink)]`}>
               {story.user.username}
             </span>
           </div>

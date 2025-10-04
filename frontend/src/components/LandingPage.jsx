@@ -134,7 +134,7 @@ const LandingPage = () => {
             <div className="hidden md:flex items-center space-x-8">
               <button 
                 onClick={() => scrollToSection('features')}
-                className={`hover:text-[#B66E2E] transition-colors duration-200 cursor-pointer ${
+                className={`px-3 py-2 rounded-lg hover:text-[#B66E2E] hover:bg-[#B66E2E]/10 transition-all duration-200 cursor-pointer ${
                   isDarkMode ? 'text-[#E6E9EA]' : 'text-[#0E1A2B]'
                 }`}
               >
@@ -142,7 +142,7 @@ const LandingPage = () => {
               </button>
               <button 
                 onClick={() => scrollToSection('creators')}
-                className={`hover:text-[#B66E2E] transition-colors duration-200 cursor-pointer ${
+                className={`px-3 py-2 rounded-lg hover:text-[#B66E2E] hover:bg-[#B66E2E]/10 transition-all duration-200 cursor-pointer ${
                   isDarkMode ? 'text-[#E6E9EA]' : 'text-[#0E1A2B]'
                 }`}
               >
@@ -150,13 +150,13 @@ const LandingPage = () => {
               </button>
               <button 
                 onClick={() => scrollToSection('how-it-works')}
-                className={`hover:text-[#B66E2E] transition-colors duration-200 cursor-pointer ${
+                className={`px-3 py-2 rounded-lg hover:text-[#B66E2E] hover:bg-[#B66E2E]/10 transition-all duration-200 cursor-pointer ${
                   isDarkMode ? 'text-[#E6E9EA]' : 'text-[#0E1A2B]'
                 }`}
               >
                 How it Works
               </button>
-              <Link to="/login" className={`hover:text-[#B66E2E] transition-colors duration-200 ${
+              <Link to="/login" className={`px-3 py-2 rounded-lg hover:text-[#B66E2E] hover:bg-[#B66E2E]/10 transition-all duration-200 ${
                 isDarkMode ? 'text-[#E6E9EA]' : 'text-[#0E1A2B]'
               }`}>
                 Login
