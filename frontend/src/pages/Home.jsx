@@ -4,7 +4,8 @@ import PostCard from '../components/posts/PostCard'
 import CreatePostCard from '../components/posts/CreatePostCard'
 import StorySection from '../components/story/StorySection'
 import SuggestedUsers from '../components/users/SuggestedUsers'
-import LandingPage from '../components/landing/LandingPage'
+import LandingPage from '../components/LandingPage'
+import { TrendingUp, Users } from 'lucide-react'
 
 const Home = () => {
   const { isDarkMode } = useSelector((state) => state.theme)
@@ -55,90 +56,174 @@ const Home = () => {
   ]
 
   return (
-    <div className={`min-h-screen transition-colors duration-200 ${
-      isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
+    <div className={`min-h-screen font-serif transition-all duration-300 ${
+      isDarkMode 
+        ? 'bg-[var(--dark-surface)] text-[var(--dark-text)]' 
+        : 'bg-[var(--light-paper)] text-[var(--light-ink)]'
     }`}>
-      <div className="max-w-6xl mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Main Feed */}
-          <div className="lg:col-span-8">
-            {/* Stories Section */}
-            <div className="mb-6">
-              <StorySection />
+      {/* Main Container with Classical Proportions */}
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        
+        {/* Welcome Header */}
+        <div className="mb-8">
+          <h1 className={`text-3xl font-bold mb-2 ${
+            isDarkMode ? 'text-[var(--dark-text)]' : 'text-[var(--light-ink)]'
+          }`}>
+            Good Evening
+          </h1>
+          <p className={`text-lg ${
+            isDarkMode ? 'text-[var(--dark-muted)]' : 'text-[var(--light-secondary)]'
+          }`}>
+            Discover thoughtful conversations and inspiring content
+          </p>
+        </div>
+
+        {/* Two Column Layout */}
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
+          
+          {/* Main Feed - Focused Content Area */}
+          <div className="xl:col-span-8">
+            
+            {/* Stories with Classical Styling */}
+            <div className="mb-8">
+              <div className={`rounded-2xl p-6 shadow-sm border transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-[var(--dark-elevated)] border-[var(--dark-border)]' 
+                  : 'bg-white border-[var(--light-border)]'
+              }`}>
+                <h2 className={`text-xl font-semibold mb-4 ${
+                  isDarkMode ? 'text-[var(--dark-text)]' : 'text-[var(--light-ink)]'
+                }`}>
+                  Stories
+                </h2>
+                <StorySection />
+              </div>
             </div>
 
-            {/* Create Post */}
-            <div className="mb-6">
-              <CreatePostCard />
+            {/* Create Post with Classical Form */}
+            <div className="mb-8">
+              <div className={`rounded-2xl p-6 shadow-sm border transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-[var(--dark-elevated)] border-[var(--dark-border)]' 
+                  : 'bg-white border-[var(--light-border)]'
+              }`}>
+                <CreatePostCard />
+              </div>
             </div>
 
-            {/* Posts Feed */}
-            <div className="space-y-6">
+            {/* Posts Feed with Enhanced Spacing */}
+            <div className="space-y-8">
               {mockPosts.map((post) => (
-                <PostCard key={post.id} post={post} />
+                <div key={post.id} className={`rounded-2xl shadow-sm border transition-all duration-300 ${
+                  isDarkMode 
+                    ? 'bg-[var(--dark-elevated)] border-[var(--dark-border)]' 
+                    : 'bg-white border-[var(--light-border)]'
+                }`}>
+                  <PostCard post={post} />
+                </div>
               ))}
             </div>
 
-            {/* Load More Button */}
-            <div className="mt-8 text-center">
-              <button className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+            {/* Classical Load More */}
+            <div className="mt-12 text-center">
+              <button className={`px-8 py-4 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 ${
                 isDarkMode 
-                  ? 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700' 
-                  : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+                  ? 'bg-[var(--dark-accent)] text-white hover:bg-opacity-90 shadow-lg' 
+                  : 'bg-[var(--light-accent)] text-white hover:bg-opacity-90 shadow-lg'
               }`}>
-                Load More Posts
+                Load More Stories
               </button>
             </div>
           </div>
 
-          {/* Sidebar */}
-          <div className="lg:col-span-4">
-            <div className="sticky top-20 space-y-6">
-              {/* Suggested Users */}
-              <SuggestedUsers />
-
-              {/* Trending Section */}
-              <div className={`rounded-xl p-6 transition-colors duration-200 ${
+          {/* Elegant Right Sidebar */}
+          <div className="xl:col-span-4">
+            <div className="sticky top-24 space-y-6">
+              
+              {/* Suggested Connections */}
+              <div className={`rounded-2xl p-6 shadow-sm border transition-all duration-300 ${
                 isDarkMode 
-                  ? 'bg-gray-800 border border-gray-700' 
-                  : 'bg-white border border-gray-200'
+                  ? 'bg-[var(--dark-elevated)] border-[var(--dark-border)]' 
+                  : 'bg-white border-[var(--light-border)]'
               }`}>
-                <h3 className={`text-lg font-semibold mb-4 ${
-                  isDarkMode ? 'text-white' : 'text-gray-900'
-                }`}>
-                  Trending Topics
-                </h3>
-                <div className="space-y-3">
-                  {['#ReactJS', '#TailwindCSS', '#WebDevelopment', '#AI', '#Flutter'].map((tag) => (
-                    <div key={tag} className={`cursor-pointer transition-colors duration-200 ${
-                      isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'
+                <div className="flex items-center gap-2 mb-4">
+                  <Users className={`w-5 h-5 ${
+                    isDarkMode ? 'text-[var(--dark-accent)]' : 'text-[var(--light-accent)]'
+                  }`} />
+                  <h3 className={`text-lg font-semibold ${
+                    isDarkMode ? 'text-[var(--dark-text)]' : 'text-[var(--light-ink)]'
+                  }`}>
+                    Suggested Connections
+                  </h3>
+                </div>
+                <SuggestedUsers />
+              </div>
+
+              {/* Trending with Classical Design */}
+              <div className={`rounded-2xl p-6 shadow-sm border transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-[var(--dark-elevated)] border-[var(--dark-border)]' 
+                  : 'bg-white border-[var(--light-border)]'
+              }`}>
+                <div className="flex items-center gap-2 mb-4">
+                  <TrendingUp className={`w-5 h-5 ${
+                    isDarkMode ? 'text-[var(--dark-accent)]' : 'text-[var(--light-accent)]'
+                  }`} />
+                  <h3 className={`text-lg font-semibold ${
+                    isDarkMode ? 'text-[var(--dark-text)]' : 'text-[var(--light-ink)]'
+                  }`}>
+                    Trending Topics
+                  </h3>
+                </div>
+                <div className="space-y-4">
+                  {['#ClassicalDesign', '#Minimalism', '#Typography', '#Architecture', '#Renaissance'].map((tag, index) => (
+                    <div key={index} className={`cursor-pointer p-3 rounded-xl transition-all duration-200 hover:bg-opacity-50 ${
+                      isDarkMode ? 'hover:bg-[var(--dark-surface)]' : 'hover:bg-[var(--light-surface)]'
                     }`}>
-                      <span className="font-medium">{tag}</span>
-                      <p className={`text-sm ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>
-                        {Math.floor(Math.random() * 1000)}K posts
-                      </p>
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <span className={`font-medium ${
+                            isDarkMode ? 'text-[var(--dark-accent)]' : 'text-[var(--light-accent)]'
+                          }`}>
+                            {tag}
+                          </span>
+                          <p className={`text-sm ${
+                            isDarkMode ? 'text-[var(--dark-muted)]' : 'text-[var(--light-secondary)]'
+                          }`}>
+                            {Math.floor(Math.random() * 300)}K posts
+                          </p>
+                        </div>
+                        <span className={`text-xs px-2 py-1 rounded-full ${
+                          isDarkMode 
+                            ? 'bg-green-900 text-green-300' 
+                            : 'bg-green-100 text-green-700'
+                        }`}>
+                          +{Math.floor(Math.random() * 20 + 5)}%
+                        </span>
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Footer Links */}
-              <div className={`rounded-xl p-6 transition-colors duration-200 ${
+              {/* Classical Footer */}
+              <div className={`rounded-2xl p-6 shadow-sm border transition-all duration-300 ${
                 isDarkMode 
-                  ? 'bg-gray-800 border border-gray-700' 
-                  : 'bg-white border border-gray-200'
+                  ? 'bg-[var(--dark-elevated)] border-[var(--dark-border)]' 
+                  : 'bg-white border-[var(--light-border)]'
               }`}>
-                <div className={`text-sm space-y-2 ${
-                  isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                <div className={`text-sm space-y-3 ${
+                  isDarkMode ? 'text-[var(--dark-muted)]' : 'text-[var(--light-secondary)]'
                 }`}>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-3 text-xs">
                     <a href="/about" className="hover:underline">About</a>
-                    <span>•</span>
                     <a href="/privacy" className="hover:underline">Privacy</a>
-                    <span>•</span>
                     <a href="/terms" className="hover:underline">Terms</a>
+                    <a href="/help" className="hover:underline">Help</a>
                   </div>
-                  <p>© 2024 SocialApp</p>
+                  <p className="text-xs pt-2 border-t border-opacity-20">
+                    © 2024 SocialApp • Crafted for thoughtful minds
+                  </p>
                 </div>
               </div>
             </div>
